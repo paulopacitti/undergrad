@@ -1,5 +1,5 @@
 # undergrad 🎓
-A super small and cute neural net engine, using only `numpy`. (wip)
+A super small and cute neural net engine, using only `numpy` (wip).
 
 ![a bear in a graduation party](https://raw.githubusercontent.com/paulopacitti/undergrad/main/docs/bear_graduate.jpg)
 
@@ -24,4 +24,4 @@ This is the neural net engine I've built while I was doing the Machine Learning 
 - [ ] Add documentation as comments throughout the source code;
 - [ ] Improve MNIST demo with a better MLP network with better accuracy;
 - [ ] Add convolutional layer construct to `undegrad.ops`;
-- [ ] Add CIFA10 demo;
+- [ ] Add CIFAR10 demo;
