@@ -1,0 +1,2 @@
+# activates development environment
+PYTHONPATH=.

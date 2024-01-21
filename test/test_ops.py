@@ -3,7 +3,7 @@ import numpy as np
 import unittest
 
 
-class TestStringMethods(unittest.TestCase):
+class TestOps(unittest.TestCase):
     def test_softmax(self):
         s = Softmax()
         x = np.array([[0, 0],
