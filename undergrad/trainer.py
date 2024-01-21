@@ -1,6 +1,5 @@
 import numpy as np
 from tqdm import tqdm
-from sklearn.metrics import balanced_accuracy_score
 
 
 class Trainer:
@@ -71,16 +70,3 @@ class Trainer:
             log_dict['val_loss'].append(val_loss)
 
         return log_dict
-
-    def accuracy(self, data_loader):
-        Y_pred = np.array([])
-        Y_true = np.array([])
-        for data in data_loader:
-            X, Y = data
-            X, Y = X.numpy(), Y.numpy()
-            Y_pred = np.append(Y_pred, np.argmax(
-                self.model.forward(X), axis=1))
-            Y_true = np.append(Y_true, np.argmax(Y, axis=1))
-
-        score = balanced_accuracy_score(Y_true, Y_pred)
-        print(f"Accuracy of the model: {score:2.4f}")

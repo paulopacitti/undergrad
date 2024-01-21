@@ -1,30 +1,31 @@
 from abc import ABC, abstractmethod
+from undergrad import Model
 import numpy as np
 
 
 class BaseOptimizer(ABC):
-    def __init__(self, model):
+    def __init__(self, model: Model):
         self.model = model
 
     @abstractmethod
-    def step(self, grads):
+    def step(self, grads: np.array):
         pass
 
 
 class SGDOptimizer(BaseOptimizer):
-    def __init__(self, model, lr=1e-3):
-        self.model = model
+    def __init__(self, model: Model, lr=1e-3):
+        super().__init__(model)
         self.lr = lr
 
-    def step(self, grads):
+    def step(self, grads: np.array):
         for i, (dW, db) in enumerate(grads):
             self.model.weights[i] -= self.lr * dW
             self.model.bias[i] -= self.lr * db
 
 
 class AdamOptmizer(BaseOptimizer):
-    def __init__(self, model, lr=1e-3, beta1=0.9, beta2=0.999, epsilon=1e-8):
-        self.model = model
+    def __init__(self, model: Model, lr=1e-3, beta1=0.9, beta2=0.999, epsilon=1e-8):
+        super().__init__(model)
         self.lr = lr
         self.beta1 = beta1
         self.beta2 = beta2
@@ -39,7 +40,7 @@ class AdamOptmizer(BaseOptimizer):
                      for layer in range(len(self.model.bias))]
         self.iteration = 0
 
-    def step(self, grads):
+    def step(self, grads: np.array):
         self.iteration += 1
         for t, (dW, db) in enumerate(grads):
             # momentum and RMSprop

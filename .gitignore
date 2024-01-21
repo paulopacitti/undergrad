@@ -4,3 +4,5 @@
 # python
 __pycache__/
 data/
+reference_notebook.ipynb
+examples/cifar10.py
