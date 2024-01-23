@@ -38,6 +38,7 @@ class Trainer:
                     'val_loss': []}
 
         self.batch_size = train_loader.batch_size
+        print("[training]:")
         for epoch in tqdm(range(n_epochs)):
             train_loss_history = []
 

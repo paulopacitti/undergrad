@@ -1,2 +1,2 @@
 # activates development environment
-PYTHONPATH=.
+export PYTHONPATH=.

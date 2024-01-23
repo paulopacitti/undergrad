@@ -5,8 +5,8 @@ from torchvision import datasets, transforms
 
 from undergrad import Model, Trainer
 from undergrad.ops import ReLU, Softmax, CrossEntropy
-from undergrad.optim import SGDOptimizer
-from undergrad.metrics import plot_loss_history, accuracy_for_class
+from undergrad.optim import AdamOptmizer
+from undergrad.metrics import accuracy_for_class, balanced_accuracy
 
 
 def setup_dataset():
@@ -40,12 +40,12 @@ def main():
     validation_loader = DataLoader(validation_dataset, batch_size=batch_size)
     train_loader = DataLoader(test_dataset, batch_size=batch_size)
 
-    model = Model([784, 400, 100, 10], [ReLU(), ReLU(),
-                  Softmax()], initialization_method="he")
-    opt = SGDOptimizer(model, lr=1e-5)
-    trainer = Trainer(model, opt, CrossEntropy())
-    history = trainer.train(15, train_loader, validation_loader)
-    plot_loss_history(history)
+    model = Model([784, 128, 64, 10], [ReLU(), ReLU(),
+                  Softmax()], initialization_method="xavier")
+    optim = AdamOptmizer(model)
+    trainer = Trainer(model, optim, CrossEntropy())
+    history = trainer.train(20, train_loader, validation_loader)
+    balanced_accuracy(model, validation_loader, classes)
     accuracy_for_class(model, validation_loader, classes)
 
 

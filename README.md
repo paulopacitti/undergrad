@@ -16,12 +16,32 @@ This is the neural net engine I've built while I was doing the Machine Learning 
   
   No, it is not, not even close. But I think it's way simpler to understand simply because `undegrad` uses `numpy` instead of building a complex Tensor module. Also, the gradients equations are declared for each machine learning operation as a function, so it's easier to understand what's happening without something like `autograd`.
 
+## Benchmarks
+- [MNIST](https://en.wikipedia.org/wiki/MNIST_database):
+  
+  ```bash
+  ➜ paulopacitti undergrad git:(main) ✗ python examples/mnist.py
+    [training]:
+    100%|███████████████████████████████████████████████████████████| 20/20 [01:17<00:00,  3.89s/it]
+    [balanced_accuracy_score]: 0.9484
+    [accuracy_for_class]:
+        class: 0    accuracy: 0.9730
+        class: 1    accuracy: 0.9771
+        class: 2    accuracy: 0.9727
+        class: 3    accuracy: 0.9055
+        class: 4    accuracy: 0.9169
+        class: 5    accuracy: 0.9431
+        class: 6    accuracy: 0.9664
+        class: 7    accuracy: 0.9595
+        class: 8    accuracy: 0.9129
+        class: 9    accuracy: 0.9571
+  ```
 
 ## Roadmap
 - [x] Write framework;
 - [x] MNIST demo;
 - [ ] Add typing hint to undergrad modules;
 - [ ] Add documentation as comments throughout the source code;
-- [ ] Improve MNIST demo with a better MLP network with better accuracy;
+- [x] Improve MNIST demo with a better MLP network with better accuracy;
 - [ ] Add convolutional layer construct to `undegrad.ops`;
 - [ ] Add CIFAR10 demo;
