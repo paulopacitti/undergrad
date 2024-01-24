@@ -24,7 +24,8 @@ class BaseLossFunc(ABC):
 
 class ReLU(BaseOp):
     """
-   The ReLU (Rectified Linear Unit) activation function. It is an element-wise operation that replaces negative values with zeros. It is commonly used in neural networks to introduce non-linearity.
+   The ReLU (Rectified Linear Unit) activation function. It is an element-wise operation that replaces negative values 
+   with zeros. It is commonly used in neural networks to introduce non-linearity.
 
     Methods
     -------
@@ -53,7 +54,9 @@ class ReLU(BaseOp):
 
 class LeakyReLU(BaseOp):
     """
-    The LeakyReLU (Leaky Rectified Linear Unit) activation function. It is an element-wise operation that replaces negative values with a small positive value. It is commonly used in neural networks to introduce non-linearity and mitigate the dying ReLU problem.
+    The LeakyReLU (Leaky Rectified Linear Unit) activation function. It is an element-wise operation that replaces 
+    negative values with a small positive value. It is commonly used in neural networks to introduce non-linearity and 
+    mitigate the dying ReLU problem.
 
     Methods
     -------
@@ -82,7 +85,8 @@ class LeakyReLU(BaseOp):
 
 class Softmax(BaseOp):
     """
-    Softmax activation function. It is used in the output layer of a neural network, converting its inputs into a probability distribution over the predicted output classes.
+    Softmax activation function. It is used in the output layer of a neural network, converting its inputs into a 
+    probability distribution over the predicted output classes.
 
     Methods
     -------
@@ -90,7 +94,8 @@ class Softmax(BaseOp):
         Applies the Softmax activation function to the input array.
 
     grad(X: np.array) -> int:
-        Returns 1 as the gradient of the Softmax activation function. In the context of this class, the gradients are discarded.
+        Returns 1 as the gradient of the Softmax activation function. In the context of this class, the gradients are 
+        discarded.
 
     Examples
     --------
@@ -118,7 +123,8 @@ class Softmax(BaseOp):
 
 class CrossEntropy(BaseLossFunc):
     """
-    The Cross-Entropy loss function. It is commonly used in classification tasks. It measures the dissimilarity between the predicted probability distribution and the true distribution.
+    The Cross-Entropy loss function. It is commonly used in classification tasks. It measures the dissimilarity between 
+    the predicted probability distribution and the true distribution.
 
     Methods
     -------
