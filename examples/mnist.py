@@ -5,7 +5,7 @@ from torchvision import datasets, transforms
 
 from undergrad import Model, Trainer
 from undergrad.ops import ReLU, Softmax, CrossEntropy
-from undergrad.optim import AdamOptmizer
+from undergrad.optim import AdamOptimizer
 from undergrad.metrics import accuracy_for_class, balanced_accuracy
 
 
@@ -42,7 +42,7 @@ def main():
 
     model = Model([784, 128, 64, 10], [ReLU(), ReLU(),
                   Softmax()], initialization_method="xavier")
-    optim = AdamOptmizer(model)
+    optim = AdamOptimizer(model)
     trainer = Trainer(model, optim, CrossEntropy())
     history = trainer.train(20, train_loader, validation_loader)
     balanced_accuracy(model, validation_loader, classes)
