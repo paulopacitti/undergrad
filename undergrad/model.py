@@ -22,16 +22,15 @@ class Model:
         bias = []
         n_layers = len(self.layers_dims)
         for l in range(0, n_layers-1):
-            # o peso w_i,j  conecta o i-th neurônio na camada atual para
-            # o j-th neurônio na próxima camada
             W = np.random.randn(self.layers_dims[l], self.layers_dims[l + 1])
             b = np.random.randn(1, self.layers_dims[l + 1])
 
-            # He et al. Inicialização Normal
+            # He et al. initialization
             if method.lower() == 'he':
                 W = W * np.sqrt(2/self.layers_dims[l])
                 b = b * np.sqrt(2/self.layers_dims[l])
 
+            # Xavier initialization
             if method.lower() == 'xavier':
                 W = W * \
                     np.sqrt(
