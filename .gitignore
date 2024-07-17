@@ -3,6 +3,7 @@
 
 # python
 __pycache__/
+venv/
 data/
 reference_notebook.ipynb
 examples/cifar10.py

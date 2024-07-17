@@ -10,10 +10,11 @@ This is the neural net engine I've built while I was doing the Machine Learning 
 **The written documentation is done by docstrings throughout the source code. That way, you can learn how neural networks work from scratch by reading the code.** 
 The API is not pytorch-like, still, it's very intuitive for newcomers to machine learning.
 
-- `undergrad`: `Model` and `Trainer` modules.
+- `undergrad.model`: model builder and layers (`Dense` only for now).
+- `undergrad.trainer`: trainer module
 - `undergrad.ops`: activation functions, loss functions and other machine learning operations.
 - `undergrad.optim`: optimizers.
-- `undergrad.metrics`: model and training evaluation functions.
+- `undergrad.metrics`: model evaluation functions.
 
 ## FAQ
 
@@ -63,3 +64,4 @@ Feel free to take part on this project to help building `undergrad`, a library t
 - [x] Improve MNIST demo with a better MLP network with better accuracy;
 - [ ] Add convolutional layer construct to `undegrad.ops`;
 - [ ] Add CIFAR10 demo;
+

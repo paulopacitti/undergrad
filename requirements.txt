@@ -1,3 +1,6 @@
+matplotlib==3.9.1
 numpy==1.25.2
+packaging==24.1
+torch==2.3.1
+torchvision==0.18.1
 tqdm==4.66.1
-torch==2.1.0

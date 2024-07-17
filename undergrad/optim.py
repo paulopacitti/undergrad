@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from undergrad import Model
+from undergrad.model import Model
 import numpy as np
 
 
@@ -45,8 +45,8 @@ class SGDOptimizer(BaseOptimizer):
 
     def step(self, grads: np.array) -> None:
         for i, (dW, db) in enumerate(grads):
-            self.model.weights[i] -= self.lr * dW
-            self.model.bias[i] -= self.lr * db
+            self.model.layers[i].weights -= self.lr * dW
+            self.model.layers[i].bias -= self.lr * db
 
 
 class AdamOptimizer(BaseOptimizer):
@@ -88,14 +88,15 @@ class AdamOptimizer(BaseOptimizer):
         self.beta1 = beta1
         self.beta2 = beta2
         self.epsilon = epsilon
-        self.v_dW = [np.zeros_like(self.model.weights[layer])
-                     for layer in range(len(self.model.weights))]
-        self.v_db = [np.zeros_like(self.model.bias[layer])
-                     for layer in range(len(self.model.bias))]
-        self.s_dW = [np.zeros_like(self.model.weights[layer])
-                     for layer in range(len(self.model.weights))]
-        self.s_db = [np.zeros_like(self.model.bias[layer])
-                     for layer in range(len(self.model.bias))]
+
+        self.v_dW = [np.zeros_like(self.model.layers[layer].weights)
+                     for layer in range(len(self.model))]
+        self.v_db = [np.zeros_like(self.model.layers[layer].bias)
+                     for layer in range(len(self.model))]
+        self.s_dW = [np.zeros_like(self.model.layers[layer].weights)
+                     for layer in range(len(self.model))]
+        self.s_db = [np.zeros_like(self.model.layers[layer].bias)
+                     for layer in range(len(self.model))]
         self.iteration = 0
 
     def step(self, grads: np.array) -> None:
@@ -120,7 +121,7 @@ class AdamOptimizer(BaseOptimizer):
                 (1 - (self.beta2 ** (self.iteration)))
 
             #  update
-            self.model.weights[t] -= self.lr * \
+            self.model.layers[t].weights -= self.lr * \
                 (v_correction_dW / (np.sqrt(s_correction_dW) + self.epsilon))
-            self.model.bias[t] -= self.lr * \
+            self.model.layers[t].bias -= self.lr * \
                 (v_correction_db / (np.sqrt(s_correction_db) + self.epsilon))
